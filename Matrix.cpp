@@ -3,19 +3,21 @@
 
 
 void List::addNode(int n, int index) { // Добавляет элемент в список
-    Node* node = new Node;
-    node->val = n;
-    node->j = index;
-    node->next = NULL; // новый узел в конце, поэтому NULL
-    if (head == NULL) {
-        head = node;
-    }
-    else {
-        Node* current = head;
-        while (current->next != NULL) { // ищем в цикле предшествующий последнему узел
-            current = current->next;
+    if (n != 0) {
+        Node* node = new Node;
+        node->val = n;
+        node->j = index;
+        node->next = NULL; // новый узел в конце, поэтому NULL
+        if (head == NULL) {
+            head = node;
         }
-        current->next = node; // предшествующий указывает на последний
+        else {
+            Node* current = head;
+            while (current->next != NULL) { // ищем в цикле предшествующий последнему узел
+                current = current->next;
+            }
+            current->next = node; // предшествующий указывает на последний
+        }
     }
 }
 
@@ -32,16 +34,7 @@ void List::print() { // Печатает список на экран
         }
 
     }
-    /*while (node != NULL) {
-        if (node->j == i) {
-            cout << node->val << "-" << node->j << " ";
-            node = node->next;
-        }
-        else {
-            cout << "0 ";
-        }
-        i++;
-    }*/
+   
 }
 
 int List::get(int getJ) { // Получает значение элемента с ключом j = getJ
